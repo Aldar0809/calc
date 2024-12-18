@@ -1,0 +1,45 @@
+Примеры использования
+Успешный запрос
+curl --location 'http://localhost:8080/api/v1/calculate' \
+--header 'Content-Type: application/json' \
+--data '{
+  "expression": "2+2*2"
+}'
+Ответ:
+
+{
+  "result": 6
+}
+Ошибка 422
+curl --location 'http://localhost:8080/api/v1/calculate' \
+--header 'Content-Type: application/json' \
+--data '{
+  "expression": "2+a"
+}'
+Ответ:
+
+{
+  "error": "Expression is not valid"
+}
+Ошибка 500
+curl --location 'http://localhost:8080/api/v1/calculate' \
+--header 'Content-Type: application/json' \
+--data '{
+  "expression": "2/0"
+}'
+Ответ:
+
+{
+  "error": "Internal server error"
+}
+Инструкция по запуску
+Убедитесь, что у вас установлен Go.
+
+Склонируйте репозиторий:
+
+git clone https://github.com/yourusername/calc_service.git
+cd calc_service
+Запустите сервер:
+
+go run ./cmd/calc_service/main.go
+Сервер будет доступен по адресу http://localhost:8080.
