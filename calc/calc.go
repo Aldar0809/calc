@@ -60,7 +60,7 @@ func shuntingYard(tokens []string) ([]string, error) {
 				operatorStack = operatorStack[:len(operatorStack)-1]
 			}
 			if len(operatorStack) == 0 {
-				return nil, fmt.Errorf("некорректное выражение: непарные скобки")
+				return nil, fmt.Errorf("непарные скобки")
 			}
 			operatorStack = operatorStack[:len(operatorStack)-1]
 		} else if token == "+" || token == "-" || token == "*" || token == "/" {
@@ -76,7 +76,7 @@ func shuntingYard(tokens []string) ([]string, error) {
 
 	for len(operatorStack) > 0 {
 		if operatorStack[len(operatorStack)-1] == "(" {
-			return nil, fmt.Errorf("некорректное выражение: непарные скобки")
+			return nil, fmt.Errorf("непарные скобки")
 		}
 		output = append(output, operatorStack[len(operatorStack)-1])
 		operatorStack = operatorStack[:len(operatorStack)-1]
