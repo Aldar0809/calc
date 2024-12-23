@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"calc"
+	"github.com/Aldar0809/calc/calc"
 )
 
 // RequestBody представляет тело запроса
