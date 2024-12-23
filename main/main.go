@@ -43,7 +43,7 @@ func CalculateHandler(w http.ResponseWriter, r *http.Request) {
 		var statusCode int
 		var errorMessage string
 		switch err.Error() {
-		case "пустое выражение", "некорректное выражение", "недопустимый токен", "непарные скобки":
+		case "пустое выражение", "некорректное выражение", "недопустимый токен", "деление на ноль", "непарные скобки":
 			statusCode = http.StatusUnprocessableEntity
 			errorMessage = "Expression is not valid"
 		default:
