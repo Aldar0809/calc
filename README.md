@@ -7,63 +7,67 @@
 ### Установка проекта
 
 Для установки проекта выполните следующую команду:
-
-git clone github.com/Aldar0809/calc
-
+```shell
+git clone github.com/Aldar0809/calc.git
 cd calc
-
+```
 ### Запуск проекта
 
 Для запуска проекта выполните следующую команду:
-
+```shell
 go run main/main.go
-
+```
 После запуска сервер будет доступен по адресу: http://localhost:8080.
 
 ### Тесты
 
 Для запуска тестов выполните следующую команду:
-
+```shell
 go test ./test
-
+```
 ## Примеры использования
 Успешное вычисление выражения
 Вы можете отправить POST-запрос с математическим выражением в теле запроса. Например:
-
+```shell
 Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/v1/calculate" -Headers @{ "Content-Type" = "application/json" } -Body '{"expression": "2+2*2"}'
-
+```
 Ответ:
+```shell
 {
   "result": 6
 }
+```
 #### Ошибка 422: Некорректное выражение
 Если выражение содержит недопустимые символы или синтаксическую ошибку, сервер вернёт ошибку 422. 
 
 Например:
-
+```shell
 Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/v1/calculate" -Headers @{ "Content-Type" = "application/json" } -Body '{"expression": "2+a"}'
-
+```
 Ответ:
-
+```shell
 {
   "error": "Expression is not valid"
 }
+```
 #### Ошибка 500: Внутренняя ошибка сервера
 Если произошла внутренняя ошибка сервера (например, деление на ноль), сервер вернёт ошибку 500. Например:
-
+```shell
 Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/v1/calculate" -Headers @{ "Content-Type" = "application/json" } -Body '{"expression": "2/0"}'
-
+```
 Ответ:
-
+```shell
 {
   "error": "Internal server error"
 }
+```
 ### Формат запроса
 Запрос должен быть отправлен методом POST на URL /api/v1/calculate с телом в формате JSON:
-
+```shell
 {
   "expression": "ваше_математическое_выражение"
 }
+```
 ### Поддерживаемые операции
 Сложение: +
 
