@@ -8,7 +8,7 @@
 
 Для установки проекта выполните следующую команду:
 ```shell
-git clone github.com/Aldar0809/calc.git
+git clone https://github.com/Aldar0809/calc.git
 cd calc
 ```
 ### Запуск проекта
@@ -48,17 +48,6 @@ Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/v1/calculate" -He
 ```shell
 {
   "error": "Expression is not valid"
-}
-```
-#### Ошибка 500: Внутренняя ошибка сервера
-Если произошла внутренняя ошибка сервера (например, деление на ноль), сервер вернёт ошибку 500. Например:
-```shell
-Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/v1/calculate" -Headers @{ "Content-Type" = "application/json" } -Body '{"expression": "2/0"}'
-```
-Ответ:
-```shell
-{
-  "error": "Internal server error"
 }
 ```
 ### Формат запроса
